@@ -12,6 +12,9 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev"
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^0.1.6",
+    "animate.css": "^3.7.2",
+    "circular-menu": "^1.0.6",
     "mdbvue": "^5.5.0",
     "nouislider": "13.1.0",
     "v-tooltip": "2.0.0-rc.33",
@@ -21,6 +24,7 @@
     "vue-clickaway": "2.2.2",
     "vue-lazyload": "1.2.6",
     "vue-material": "1.0.0-beta-10.2",
+    "vue-radial-menu": "^1.1.1",
     "vue-router": "3.0.2"
   },
   "devDependencies": {

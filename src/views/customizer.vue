@@ -1,84 +1,32 @@
 <template>
   <div class="wrapper">
-    <div class="image-wrapper">
+    <!-- <div class="image-wrapper">
       <img :src="leaf4" alt="leaf4" class="leaf4" v-show="leafShow" />
       <img :src="leaf3" alt="leaf3" class="leaf3" v-show="leafShow" />
       <img :src="leaf2" alt="leaf2" class="leaf2" v-show="leafShow" />
       <img :src="leaf1" alt="leaf1" class="leaf1" v-show="leafShow" />
-    </div>
-   
-   
-      <!-- <div class="md-layout">
-        <div class="md-layout-item md-size-100 md-small-size-100">
-          <h3><small>Tabs on Plain Card</small></h3>
-          <nav-tabs-card no-label tabs-plain>
-            <template slot="content">
-              <md-tabs md-sync-route class="md-danger" md-alignment="left">
-                <md-tab id="tab-home" md-label="Home">
-                  <p>
-                    I think that’s a responsibility that I have, to push
-                    possibilities, to show people, this is the level that things
-                    could be at. So when you get something that has the name
-                    Kanye West on it, it’s supposed to be pushing the furthest
-                    possibilities. I will be the leader of a company that ends
-                    up being worth billions of dollars, because I got the
-                    answers. I understand culture. I am the nucleus.
-                  </p>
-                </md-tab>
-
-                <md-tab id="tab-pages" md-label="Updates">
-                  <p>
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers. I understand
-                    culture. I am the nucleus. I think that’s a responsibility
-                    that I have, to push possibilities, to show people, this is
-                    the level that things could be at. I think that’s a
-                    responsibility that I have, to push possibilities, to show
-                    people, this is the level that things could be at.
-                  </p>
-                </md-tab>
-
-                <md-tab id="tab-posts" md-label="History">
-                  <p>
-                    I think that’s a responsibility that I have, to push
-                    possibilities, to show people, this is the level that things
-                    could be at. I will be the leader of a company that ends up
-                    being worth billions of dollars, because I got the answers.
-                    I understand culture. I am the nucleus. I think that’s a
-                    responsibility that I have, to push possibilities, to show
-                    people, this is the level that things could be at.
-                  </p>
-                </md-tab>
-              </md-tabs>
-            </template>
-          </nav-tabs-card>
-        </div>
     </div> -->
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <circle-menu type="middle-around" :number="4" animate="animated flip" mask='black' circle>
-    <button type="button" slot="Btn"></button>
-    <a slot="item_1" class="fab fa-twitter fa-lg"></a>
-    <a slot="item_2" class="fab fa-weixin fa-lg"></a>
-    <a slot="item_3" class="fab fa-weibo fa-lg"></a>
-    <a slot="item_4" class="fab fa-github fa-lg"></a>
-  </circle-menu>
+
+    <radial-menu
+    class="fixedButton"
+      style="margin: auto; margin-top: 300px; background-color: white"
+      :itemSize="55"
+      :radius="100"
+      :angle-restriction="180">
+        <radial-menu-item 
+          v-for="(item, index) in items" 
+          :key="index" 
+          style="background-color: white" 
+          @click="() => handleClick(item)">
+          <span>{{item}}</span>
+        </radial-menu-item>
+      </radial-menu>
+      <!-- <div style="color: rgba(0,0,0,0.6); margin-top: 16px;">{{ lastClicked }}</div> -->
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    
-    
-  <div style="text-align: center">
-      <button class="btn-outline-light" style="border-radius:2px; border: 0px;background-color:white">
-        <i style="font-size:40px;color:black" class="fab fa-facebook-square"></i>
-      </button>
-      <button class="btn-outline-light" style="border: 0px;background-color:white">
-        <i style="font-size:40px;color:black" class="fab fa-youtube" ></i>
-      </button>
-      <button class="btn-outline-light" style="border: 0px;background-color:white">
-        <i style="font-size:40px;color:black" class="fab fa-instagram"></i>
-      </button>
-      <button class="btn-outline-light" style="border: 0px;background-color:white">
-        <i style="font-size:34px;color:black" class="fas fa-envelope"></i>
-      </button>
-    </div>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 </template>
 
@@ -89,6 +37,7 @@ import Notifications from "./components/NotificationsSection";
 import TypographyImages from "./components/TypographyImagesSection";
 import JavascriptComponents from "./components/JavascriptComponentsSection";
 import { NavTabsCard } from "@/components";
+import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
 
 export default {
   components: {
@@ -97,7 +46,9 @@ export default {
     Notifications,
     TypographyImages,
     JavascriptComponents,
-    NavTabsCard
+    NavTabsCard,
+    RadialMenu,
+    RadialMenuItem
   },
   name: "home",
   bodyClass: "index-page",
@@ -137,6 +88,8 @@ export default {
   },
   data() {
     return {
+      items: ['foo', 'bar', 'hello', 'world', 'more', 'items'],
+      lastClicked: 'click on something!',
       firstname: null,
       email: null,
       password: null,
@@ -147,6 +100,9 @@ export default {
     };
   },
   methods: {
+    handleClick (item) {
+      this.lastClicked = item;
+    },
     leafActive() {
       if (window.innerWidth < 768) {
         this.leafShow = false;
@@ -170,11 +126,13 @@ export default {
   mounted() {
     this.leafActive();
     window.addEventListener("resize", this.leafActive);
+    
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.leafActive);
   }
 };
+
 </script>
 <style lang="scss">
 .sfont {
@@ -185,6 +143,26 @@ export default {
   .btn-container {
     display: flex;
   }
+  
+}
+@media screen and (min-width: 1025px) {
+  .marginUp{
+    margin-top:100px;
+  }
+  .fixedButton {
+  position:fixed;
+  background:red;
+  left:50%;
+  top:50%;
+}
+}
+@media screen and (max-width: 1025px) {
+  .fixedButton {
+  position:fixed;
+  background:red;
+  left:50%;
+  bottom:5%;
+}
 }
 @media screen and (max-width: 991px) {
   .editBtn {
@@ -196,7 +174,41 @@ export default {
   .marginUp {
     margin-top:80px;
   }
+  .fixedButton {
+  position:fixed;
+  background:red;
+  left:43%;
+  bottom:5%;
 }
+}
+
+@media screen and (max-width: 770px) {
+  .fixedButton {
+  position:fixed;
+  background:red;
+  left:48%;
+  bottom:5%;
+}
+}
+@media screen and (max-width: 4150px) {
+  .h1ForI5 {
+    margin-top: -50px;
+  }
+  .h3ForI5 {
+    margin-top: 50px;
+    margin-bottom: -50px;
+  }
+  .forI5 {
+    margin-top: -500px;
+    width: 100%;
+  }
+  .fixedButton {
+  position:fixed;
+  background:red;
+  left:45%;
+  bottom:5%;
+}
+} 
 @media screen and (max-width: 330px) {
   .h1ForI5 {
     margin-top: -50px;
@@ -209,11 +221,13 @@ export default {
     margin-top: -500px;
     width: 100%;
   }
-} 
-@media screen and (min-width: 991px) {
-  .marginUp{
-    margin-top:100px;
-  }
+  .fixedButton {
+  position:fixed;
+  background:red;
+  left:41%;
+  bottom:5%;
 }
+} 
+
 
 </style>
