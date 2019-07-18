@@ -2,58 +2,21 @@
   <md-toolbar
     id="toolbar"
     md-elevation="0"
-    class="md-absolute"
+    class="md-transparent md-absolute"
     :class="extraNavClasses"
     :color-on-scroll="colorOncroll"
   >
-<!-- For PC -->
-    <div class="showOnPC md-toolbar-row md-collapse-lateral">
-      
+    <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <a href="./">
-          <img :src="logoImg" v-if="!this.logoBig||this.$route.path!='/'" href="#/" class="w3-animate-top md-title" style="width:140px;height:65px; margin-top:-5px"/> 
+        <img :src="logoImg" v-if="this.logoWhite" href="#/" class="md-title" style="width:140px;height:65px; margin-top:-5px"/> 
+        <img :src="logoImgW" v-else href="#/" class="md-title" style="width:140px;height:65px;margin-top:-17px"/> 
         </a>
       </div>
-      <!-- Center Nav Bar -->
-      <div style="text-align: center;">
-      <img :src="logoImg" v-if="this.logoBig&&this.$route.path=='/'" href="#/" class="w3-animate-top" 
-        style="width:226px;height:70px; margin-top:5px"/>
-        
-          <md-list style="margin-top:9px" class="w3-animate-top"
-              v-if="this.logoBig&&this.$route.path=='/'"
-            >
-          <md-list-item >
-            <a href="/">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/'">Home</u>
-            <u v-else style="border:0">Home</u></p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/model">
-            <p style="color:black;margin: 9px"><u v-if="this.$route.path=='/model'">Models</u><u style="border:0" v-else>Models</u> </p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/customizer">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/customizer'">Customizer</u>
-            <u style="border:0" v-else>Customizer</u></p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/about">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/about'">About Shane</u><u v-else style="border:0">About Shane</u> </p>
-            </a>
-          </md-list-item>
-            </md-list>
-            </div>
-      
+      <!-- Mobile -->
       <div class="md-toolbar-section-end">
-        
         <md-button
-          class="showOnPC md-just-icon md-simple md-toolbar-toggle"
+          class="md-just-icon md-simple md-toolbar-toggle"
           :class="{ toggled: toggledClass }"
           @click="toggleNavbarMobile()"
         >
@@ -67,131 +30,103 @@
             <mobile-menu nav-mobile-section-start="false">
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
-      
-            <!-- Fixed Nav Bar -->
-            <md-list class="w3-animate-top"
-              v-if="!this.logoBig||this.$route.path!='/'"
-            >
-          <md-list-item >
-            <a href="/">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/'">Home</u>
-            <u v-else style="border:0">Home</u></p>
-            </a>
-          </md-list-item>
+            <!-- Black -->
+            <md-list v-if="this.logoWhite||toggledClass==true">
+              <md-list-item v-if="this.$route.path!='/Configurator'">
+                <i style="color:black" class="material-icons">build</i>
+                <p style="margin-top:9px;margin-left:8px">Build your guitar</p>
+              </md-list-item>
 
-          <md-list-item>
-            <a href="#/model">
-            <p style="color:black;margin: 9px"><u v-if="this.$route.path=='/model'">Models</u><u style="border:0" v-else>Models</u> </p>
-            </a>
-          </md-list-item>
+              <md-list-item style="margin-right:15px">
+                <i style="color:black" class="material-icons">cloud_download</i>
+                <p style="margin-top:10px;margin-left:9px">Contact Shane</p>
+              </md-list-item>
 
-          <md-list-item>
-            <a href="#/customizer">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/customizer'">Customizer</u>
-            <u style="border:0" v-else>Customizer</u></p>
-            </a>
-          </md-list-item>
 
-          <md-list-item>
-            <a href="#/about">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/about'">About Shane</u><u v-else style="border:0">About Shane</u> </p>
-            </a>
-          </md-list-item>
-            </md-list>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- For mobile -->
-    <div class="showOnMobile md-toolbar-row md-collapse-lateral">
-      <div class="showOnMobile md-toolbar-section-start">
-        <a href="./">
-        <img :src="logoImg" href="#/" class="w3-animate-top md-title" style="width:140px;height:65px; margin-top:-5px"/> 
-        </a>
-      </div>
-      
-      <div class="showOnMobile md-toolbar-section-end">
-        <md-button
-          class="showOnMobile md-just-icon md-simple md-toolbar-toggle"
-          :class="{ toggled: toggledClass }"
-          @click="toggleNavbarMobile()"
-        >
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </md-button>
-
-        <div class="md-collapse">
-          <div class="md-collapse-wrapper">
-            <mobile-menu nav-mobile-section-start="false">
-            </mobile-menu>
-
-              <md-list class="w3-animate-top"
-              v-if="this.logoBig"
-            >
-              <md-list-item >
-            <a href="/">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/'">Home</u>
-            <u v-else style="border:0">Home</u></p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/model">
-            <p style="color:black;margin: 9px"><u v-if="this.$route.path=='/model'">Models</u><u style="border:0" v-else>Models</u> </p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/customizer">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/customizer'">Customizer</u>
-            <u style="border:0" v-else>Customizer</u></p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/about">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/about'">About Shane</u><u v-else style="border:0">About Shane</u> </p>
-            </a>
-          </md-list-item>
+              <md-list-item
+                href="https://twitter.com/CreativeTim"
+                target="_blank"
+                style="margin-left:-15px;margin-right:18px"
+              >
+                <i style="color:black;margin-left:50px" class="fab fa-twitter"></i>
+                <p class="hidden-lg">Twitter</p>
+                <md-tooltip md-direction="bottom"
+                  >Follow us on Twitter</md-tooltip
+                >
+              </md-list-item>
+              <md-list-item
+                href="https://www.facebook.com/CreativeTim"
+                target="_blank"
+                style="margin-left:-15px;margin-right:18px"
+              >
+                <i style="color:black" class="fab fa-facebook-square"></i>
+                <p class="hidden-lg">Facebook</p>
+                <md-tooltip md-direction="bottom"
+                  >Like us on Facebook</md-tooltip
+                >
+              </md-list-item>
+              <md-list-item
+                href="https://www.instagram.com/CreativeTimOfficial"
+                target="_blank"
+                style="margin-left:-15px;margin-right:18px"
+              >
+                <i style="color:black" class="fab fa-instagram"></i>
+                <p class="hidden-lg">Instagram</p>
+                <md-tooltip md-direction="bottom"
+                  >Follow us on Instagram</md-tooltip
+                >
+              </md-list-item>
             </md-list>
 
-          <md-list class="w3-animate-top"
-              v-else
-            >
-           <md-list-item >
-            <a href="/">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/'">Home</u>
-            <u v-else style="border:0">Home</u></p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/model">
-            <p style="color:black;margin: 9px"><u v-if="this.$route.path=='/model'">Models</u><u style="border:0" v-else>Models</u> </p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/customizer">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/customizer'">Customizer</u>
-            <u style="border:0" v-else>Customizer</u></p>
-            </a>
-          </md-list-item>
-
-          <md-list-item>
-            <a href="#/about">
-            <p style="color:black;margin:9px"><u v-if="this.$route.path=='/about'">About Shane</u><u v-else style="border:0">About Shane</u> </p>
-            </a>
-          </md-list-item>
+            <!-- White -->
+            <md-list style="margin-top:-15px" v-else>
+              <!-- <md-list-item>
+                <i style="color:white" class="material-icons">content_paste</i>
+                <p style="color:white;margin-top:9px;margin-left:6px">Build your guitar</p>
+              </md-list-item> -->
+              <md-list-item style="margin-right:15px">
+                <i style="color:white" class="material-icons">cloud_download</i>
+                <p style="color:white;margin-top:10px;margin-left:9px">Contact Shane</p>
+              </md-list-item>
+              <md-list-item
+                href="https://twitter.com/CreativeTim"
+                target="_blank"
+                style="margin-left:-15px;margin-right:18px"
+              >
+                <i style="color:white" class="fab fa-twitter"></i>
+                <p style="color:white" class="hidden-lg">Twitter</p>
+                <md-tooltip md-direction="bottom"
+                  >Follow us on Twitter</md-tooltip
+                >
+              </md-list-item>
+              <md-list-item
+                href="https://www.facebook.com/CreativeTim"
+                target="_blank"
+                style="margin-left:-15px;margin-right:18px"
+              >
+                <i style="color:white" class="fab fa-facebook-square"></i>
+                <p style="color:white" class="hidden-lg">Facebook</p>
+                <md-tooltip md-direction="bottom"
+                  >Like us on Facebook</md-tooltip
+                >
+              </md-list-item>
+              <md-list-item
+                href="https://www.instagram.com/CreativeTimOfficial"
+                target="_blank"
+                style="margin-left:-15px;margin-right:18px"
+              >
+                <i style="color:white" class="fab fa-instagram"></i>
+                <p style="color:white" class="hidden-lg">Instagram</p>
+                <md-tooltip md-direction="bottom"
+                  >Follow us on Instagram</md-tooltip
+                >
+              </md-list-item>
             </md-list>
           </div>
         </div>
       </div>
     </div>
   </md-toolbar>
-
 </template>
 <script>
   import { mdbIcon } from 'mdbvue';
@@ -250,7 +185,7 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
-      logoBig: true
+      logoWhite: false
     };
   },
   computed: {
@@ -291,9 +226,9 @@ export default {
       if (this.colorOnScroll > 0 && scrollValue > this.colorOnScroll) {
         this.extraNavClasses = `md-${this.type}`;
         navbarColor.classList.remove("md-transparent");
-        this.logoBig = false
+        this.logoWhite = true
       } else {
-        this.logoBig = true
+        this.logoWhite = false
         if (this.extraNavClasses) {
           this.extraNavClasses = "";
           navbarColor.classList.add("md-transparent");
@@ -318,27 +253,8 @@ export default {
   }
 };
 </script>
-
 <style scoped>
-u {
-  padding-bottom:3px;
-  text-decoration:none;
-  border-bottom:2px solid #000;
-}
 .sfont {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
-@media screen and (min-width: 991px) {
-.showOnMobile{
-  display: none;
-}
-} 
-@media screen and (max-width: 991px) {
-.showOnPC{
-  display: none;
-}
-.hideNavigator{
-  display: none;
-}
-} 
 </style>

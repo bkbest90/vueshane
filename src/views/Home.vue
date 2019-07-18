@@ -1,6 +1,29 @@
 <template>
   <div class="wrapper">
-    <carousel
+    <parallax
+      class="page-header header-filter"
+      :style="headerStyle"
+    >
+      <div class="md-layout">
+        <div class="md-layout-item">
+          <div class="image-wrapper">
+            <div class="brand">
+              <p class="h1ForI5 h1ForBig sfont">Shane's guitar shop</p>
+              <h3 class=" sfont">Your Life Your Style Be Yourself</h3>
+              <md-button
+                href="#/Configurator"
+                style="margin-top:70px;"
+                class="md-success forI5 editBtn md-lg"
+              >Try to build your guitar for free</md-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </parallax>
+    <div class="main main-raised">
+      <div class="section section-basic">
+        <div class="md-layout-item md-size-100 mx-auto ">
+          <carousel
             :per-page="1"
             loop
             :speed="700"
@@ -8,8 +31,8 @@
             :autoplay-timeout="4000"
             :mouse-drag="false"
             navigationEnabled
-            navigationNextLabel="<i style='margin-top:80px' class='hideNavigator material-icons'>keyboard_arrow_right</i>"
-            navigationPrevLabel="<i style='margin-top:80px'class='hideNavigator material-icons'>keyboard_arrow_left</i>"
+            navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
+            navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
           >
             <slide>
               <div class="carousel-caption">
@@ -49,21 +72,8 @@
               />
             </slide>
           </carousel>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div style="text-align: center">
-      <button class="btn-outline-light" style="border-radius:2px; border: 0px;background-color:white">
-        <i style="font-size:40px;color:black" class="fab fa-facebook-square"></i>
-      </button>
-      <button class="btn-outline-light" style="border: 0px;background-color:white">
-        <i style="font-size:40px;color:black" class="fab fa-youtube" ></i>
-      </button>
-      <button class="btn-outline-light" style="border: 0px;background-color:white">
-        <i style="font-size:40px;color:black" class="fab fa-instagram"></i>
-      </button>
-      <button class="btn-outline-light" style="border: 0px;background-color:white">
-        <i style="font-size:34px;color:black" class="fas fa-envelope"></i>
-      </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -174,9 +184,6 @@ export default {
   .editBtn {
     width: 80%;
   }
-  .hideNavigator{
-    display: none;
-}
 }
 @media screen and (max-width: 330px) {
   .h1ForI5 {
@@ -190,11 +197,5 @@ export default {
     margin-top: -500px;
     width: 100%;
   }
-} 
-@media screen and (min-width: 991px) {
-  .marginUp{
-    margin-top:80px;
-  }
 }
-
 </style>

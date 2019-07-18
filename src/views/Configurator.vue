@@ -22,9 +22,35 @@
                 />
               </div>
               <div class="name">
-                <h3 class="title">About page กำลังทำจ้า!!!</h3>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br>
+                <h3 class="title">Guitar builder</h3>
+              </div>
+              <h3>Choose what you want</h3>
+              <div class="md-layout-item">
+                <nav-tabs-card no-label>
+                  <template slot="content">
+                    <md-tabs
+                      class="md-success"
+                      md-alignment="centered"
+                    >
+                      <md-tab
+                        id="tab-home"
+                        md-label="Home"
+                      >Page 1</md-tab>
+                      <md-tab
+                        id="tab-pages"
+                        md-label="Pages"
+                      >Page 2</md-tab>
+                      <md-tab
+                        id="tab-posts"
+                        md-label="Posts"
+                      >Page 3</md-tab>
+                      <md-tab
+                        id="tab-favorites"
+                        md-label="Favorites"
+                      >Page 4</md-tab>
+                    </md-tabs>
+                  </template>
+                </nav-tabs-card>
               </div>
             </div>
           </div>

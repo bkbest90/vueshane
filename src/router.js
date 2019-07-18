@@ -7,32 +7,12 @@ import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Home from "./views/Home.vue";
-import customizer from "./views/customizer.vue";
-import model from "./views/model.vue";
-import about from "./views/about.vue";
+import Configurator from "./views/Configurator.vue";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
-      path: "/about",
-      name: "about",
-      components: { default: about, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 10 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-    {
-      path: "/model",
-      name: "model",
-      components: { default: model, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 10 },
-        footer: { backgroundColor: "black" }
-      }
-    },
     {
       path: "/",
       name: "Home",
@@ -43,9 +23,9 @@ export default new Router({
       }
     },
     {
-      path: "/customizer",
-      name: "customizer",
-      components: { header: MainNavbar, default: customizer, footer: MainFooter },
+      path: "/Configurator",
+      name: "Configurator",
+      components: { default: Configurator, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 10 },
         footer: { backgroundColor: "black" }

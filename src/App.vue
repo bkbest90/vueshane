@@ -1,9 +1,9 @@
 <template>
-  <div style="background-color: white;" id="material-kit">
-    <div style="background-color: white;" :class="{ 'nav-open': NavbarStore.showNavbar }">
+  <div id="material-kit">
+    <div :class="{ 'nav-open': NavbarStore.showNavbar }">
       <router-view name="header" />
       <div>
-        <router-view style="" />
+        <router-view />
       </div>
       <router-view name="footer" />
     </div>

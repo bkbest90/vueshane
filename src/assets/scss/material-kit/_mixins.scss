@@ -11,8 +11,8 @@
 }
 
 @mixin toolbar-colors($variation-color, $text-color){
-  background-color: $white-color !important;
-  // @include shadow-navbar-color($variation-color);
+  background-color: $variation-color !important;
+  @include shadow-navbar-color($variation-color)
 
   .md-title,
   .md-list .md-list-item-content,
@@ -20,7 +20,7 @@
   &,
   &:hover,
   &:focus{
-    color: black;
+    color: $text-color !important;
   }
 }
 
